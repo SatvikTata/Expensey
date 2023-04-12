@@ -8,29 +8,30 @@ from kivy.uix.button import Button
 
 class myGridLayout(GridLayout):
     def __init__(self, **kwargs):
-        # calling gridlayout constructor
+        #calling gridlayout constructor
         super(myGridLayout,self).__init__(**kwargs)
 
-        # setting the number of columns
-        self.cols=2
+        #setting the number of columns
+        self.cols=1
         
-        # adding widgets
-        self.add_widget(Label(text='Name:'))
 
-        # adding the inputBox
-        self.name=TextInput(multiline=False)
-        self.add_widget(self.name)
-
-        # creating a submit button
-        self.submit=Button(text='Submit',font_size=20)
+        #creating a expense button
+        self.create_expense=Button(text='Create an Expense',font_size=20)
 
         #binding the button
-        self.submit.bind(on_press=self.press)
-        self.add_widget(self.submit)
+        self.create_expense.bind(on_press=self.pressed_create_exp)
+        self.add_widget(self.create_expense)
 
-    def press(self,instance):
-        name=self.name.text
-        print(name)
+        #creating a tracking button
+        self.track_expense=Button(text='Track your Expense',font_size=20)
+        self.track_expense.bind(on_press=self.pressed_track_exp)
+        self.add_widget(self.track_expense)
+
+    def pressed_create_exp(self,instance):
+        self.add_widget(Label(text='Creating an Expense'))
+
+    def pressed_track_exp(self,instance):
+        self.add_widget(Label(text='Tracking you Expense'))
 
 
 class ExpenseyApp(App):
