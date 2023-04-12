@@ -7,5 +7,5 @@ class MainWidget(Widget):
 
 class ExpenseyApp(App):
     pass
-print("Hello World")
+
 ExpenseyApp().run()
